@@ -215,14 +215,17 @@ async function loadFolderOptions() {
 async function createVideo() {
     const folder = document.getElementById("inpVideoFolder").value;
     const name = document.getElementById("inpVideoName").value.trim();
-    const url = document.getElementById("inpVideoUrl").value.trim();
+    let url = document.getElementById("inpVideoUrl").value.trim();
 
     if (!folder || !name || !url) return alert("Fill all fields");
 
-    // Convert Drive URL to Preview URL if needed
-    let finalUrl = url;
-    if (url.includes("drive.google.com") && url.includes("/view")) {
-        finalUrl = url.replace("/view", "/preview");
+    // SMARTER DRIVE URL CONVERTER (VIDEO -> PREVIEW)
+    if (url.includes("drive.google.com")) {
+        // Extract ID
+        const idMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (idMatch && idMatch[1]) {
+            url = `https://drive.google.com/file/d/${idMatch[1]}/preview`;
+        }
     }
 
     const btn = document.getElementById("subVideo");
@@ -232,7 +235,7 @@ async function createVideo() {
         await addDoc(collection(db, "trainingVideos"), {
             folder,
             name,
-            url: finalUrl,
+            url: url,
             createdAt: Date.now()
         });
         alert("Video added!");
@@ -251,9 +254,19 @@ async function createEmployee() {
     const name = document.getElementById("inpEmpName").value.trim();
     const about = document.getElementById("inpEmpAbout").value.trim();
     const stars = document.getElementById("inpEmpStars").value;
-    const photoURL = document.getElementById("inpEmpPhoto").value.trim();
+    let photoURL = document.getElementById("inpEmpPhoto").value.trim();
 
     if (!name || !about || !photoURL) return alert("Fill all fields");
+
+    // SMARTER DRIVE URL CONVERTER (IMAGE -> DIRECT VIEW)
+    if (photoURL.includes("drive.google.com")) {
+        // Extract ID
+        const idMatch = photoURL.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (idMatch && idMatch[1]) {
+            // Use 'uc?export=view' for direct image loading
+            photoURL = `https://drive.google.com/uc?export=view&id=${idMatch[1]}`;
+        }
+    }
 
     const btn = document.getElementById("subEmployee");
     btn.innerText = "Adding...";
