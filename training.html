@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Training | Mr. Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="training-page">
+
+  <!-- ================= ADMIN POPUP ================= -->
+  <div class="admin-popup" id="adminPopup">
+    <div class="admin-popup-box">
+      <h2>Hey Admin 👋</h2>
+      <p>
+        Ready to shape the team and guide learning?<br>
+        Enter your admin pass to continue.
+      </p>
+
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+
+      <div class="admin-actions">
+        <button id="enterAdminBtn">Enter Admin Mode</button>
+        <button id="cancelAdminBtn" class="ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN FAB ================= -->
+  <button class="admin-fab" id="adminFab" title="Admin Actions">+</button>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header premium-header">
+    <div class="logo-area" id="trainingLogo">
+      <img src="images/CFC_Logo.png" alt="Mr. Technology Logo">
+      <span class="brand-text">Mr. Technology</span>
+    </div>
+  </header>
+
+  <!-- ================= TRAINING LAYOUT ================= -->
+  <div class="training-layout">
+
+    <!-- FOLDERS -->
+    <aside class="training-folders">
+      <h3>Training Modules</h3>
+      <!-- injected by JS -->
+    </aside>
+
+    <!-- VIDEOS -->
+    <section class="training-videos">
+      <ul>
+        <li class="placeholder">Select a training module</li>
+      </ul>
+    </section>
+
+    <!-- PLAYER -->
+    <section class="training-player" id="playerContainer">
+      <div class="player-header">
+        <h2 id="videoTitle">Select a video</h2>
+        <button id="fsBtn">⛶ Fullscreen</button>
+      </div>
+
+      <iframe id="videoFrame" allow="autoplay; fullscreen" allowfullscreen>
+      </iframe>
+
+      <p id="videoDesc"></p>
+    </section>
+
+  </div>
+
+  <!-- ================= ADMIN MODE (MUST LOAD FIRST) ================= -->
+  <script type="module" src="js/admin-mode.js"></script>
+
+  <!-- ================= LOGO GESTURE (FIXED) ================= -->
+  <script>
+    let clickTimer = null;
+    const logo = document.getElementById("trainingLogo");
+
+    // SINGLE CLICK → HOME
+    logo.addEventListener("click", () => {
+      if (clickTimer) clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => {
+        location.href = "index.html";
+      }, 350);
+    });
+
+    // CTRL + SHIFT + DOUBLE CLICK → ADMIN
+    logo.addEventListener("dblclick", (e) => {
+      clearTimeout(clickTimer);
+
+      if (e.ctrlKey && e.shiftKey) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.showAdminPopup();
+      }
+    });
+  </script>
+
+  <!-- ================= TRAINING LOGIC ================= -->
+  <script type="module" src="js/training.js"></script>
+
+</body>
+
+</html>

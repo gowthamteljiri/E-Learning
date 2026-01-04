@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meet Your Colleagues | Mr. Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= ADMIN POPUP ================= -->
+  <div class="admin-popup" id="adminPopup">
+    <div class="admin-popup-box">
+      <h2>Hey Admin 👋</h2>
+      <p>
+        Ready to shape the team and guide learning?<br>
+        Enter your admin pass to continue.
+      </p>
+
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+
+      <div class="admin-actions">
+        <button id="enterAdminBtn">Enter Admin Mode</button>
+        <button id="cancelAdminBtn" class="ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN FLOATING BUTTON ================= -->
+  <button class="admin-fab" id="adminFab" title="Admin Actions">+</button>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header premium-header">
+    <div class="logo-area">
+      <img src="images/CFC_Logo.png" alt="Mr. Technology Logo" />
+      <span class="brand-text">Mr. Technology</span>
+    </div>
+  </header>
+
+  <!-- ================= MEET CONTENT ================= -->
+  <section class="meet-container" id="meetContainer">
+    <!-- Employees injected by JS -->
+  </section>
+
+  <!-- ================= ADMIN MODE (LOAD FIRST) ================= -->
+  <script type="module" src="js/admin-mode.js"></script>
+
+  <!-- ================= LOGO GESTURE ================= -->
+  <script>
+    let clickTimeout = null;
+    const logo = document.querySelector(".logo-area");
+
+    // SINGLE CLICK → HOME
+    logo.addEventListener("click", () => {
+      if (clickTimeout) clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(() => {
+        location.href = "index.html";
+      }, 400);
+    });
+
+    // DOUBLE CLICK → ADMIN
+    logo.addEventListener("dblclick", (e) => {
+      clearTimeout(clickTimeout);
+      showAdminPopup();
+    });
+  </script>
+
+  <!-- ================= MEET LOGIC ================= -->
+  <script type="module" src="js/meet.js"></script>
+
+</body>
+
+</html>
