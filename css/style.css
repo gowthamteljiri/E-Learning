@@ -1,0 +1,393 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background: #f7f5f2;
+  color: #1f2937;
+}
+
+/* ================= HEADER ================= */
+.header {
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #ece7e1, #f7f5f2);
+  border-radius: 0 0 40px 40px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+}
+
+.logo-area img {
+  height: 58px;
+}
+
+.brand-text {
+  font-family: "Times New Roman", serif;
+  font-size: 33px;
+  font-weight: 1000;
+  position: relative;
+  top: -5px;
+  color: #383838;
+  text-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* ================= BUTTONS ================= */
+.header-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  padding: 12px 26px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(37,99,235,0.4);
+}
+
+.outline-btn {
+  border: 2px solid #1e3a8a;
+  color: #1e3a8a;
+}
+
+.outline-btn:hover {
+  background: #1e3a8a;
+  color: white;
+}
+
+/* ================= HOME ================= */
+.hero {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
+  width: 80%;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+}
+
+.content {
+  width: 85%;
+  margin: 90px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+
+.content-block {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.content-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.text-box {
+  width: 55%;
+  background: #f1ece7;
+  padding: 34px;
+  border-radius: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.image-box {
+  width: 45%;
+}
+
+.image-box img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+/* ================= TRAINING ================= */
+.training-layout {
+  display: grid;
+  grid-template-columns: 260px 320px 1fr;
+  height: calc(100vh - 90px);
+}
+
+.training-folders {
+  background: #f1ece7;
+  padding: 22px;
+}
+
+.training-folders div {
+  background: white;
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative; /* Fixed delete button positioning */
+}
+
+.training-folders div:hover {
+  transform: translateX(4px);
+  background: #e5e7eb;
+}
+
+.training-videos {
+  padding: 22px;
+  border-right: 1px solid #ddd;
+}
+
+.training-videos li {
+  list-style: none;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f9fafb;
+  margin-bottom: 12px;
+  cursor: pointer;
+  position: relative; /* Fixed delete button positioning */
+}
+
+.training-videos li:hover {
+  background: #e5e7eb;
+}
+
+.training-player {
+  padding: 26px;
+}
+
+.training-player iframe {
+  width: 100%;
+  height: 380px;
+  border-radius: 18px;
+  border: none;
+  background: black;
+}
+
+/* ================= MEET PAGE ================= */
+.meet-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px;
+}
+
+.employee-item {
+  position: relative;
+}
+
+.employee-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+/* ID CARD */
+.employee-card {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  width: 220px;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.9),
+    rgba(236,231,225,0.9)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+  z-index: 999;
+}
+
+.employee-item:hover .employee-card,
+.employee-item.show .employee-card {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.employee-photo-big {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.employee-card h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.employee-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.stars {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.star {
+  color: #d1d5db;
+}
+
+.star.filled {
+  color: #fbbf24;
+}
+
+/* ================= ADMIN DELETE ================= */
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: crimson;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+/* ================= ADMIN POPUP ================= */
+.admin-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.admin-popup.show {
+  display: flex;
+}
+
+.admin-popup-box {
+  background: linear-gradient(
+    135deg,
+    #f7f5f2,
+    #ece7e1
+  );
+  padding: 36px;
+  border-radius: 26px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+  animation: popIn 0.45s ease;
+}
+
+.admin-popup-box h2 {
+  font-family: "Times New Roman", serif;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.admin-popup-box p {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 18px;
+}
+
+.admin-popup-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-actions button:first-child {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+}
+
+.admin-actions .ghost {
+  background: transparent;
+  border: 1px solid #d1d5db;
+}
+
+/* ================= ADMIN FAB ================= */
+.admin-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  font-size: 36px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(37,99,235,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+}
+
+.admin-fab:hover {
+  transform: scale(1.08);
+}
+
+/* POP ANIMATION */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+

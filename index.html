@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mr. Technology | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= ADMIN POPUP ================= -->
+  <div class="admin-popup" id="adminPopup">
+    <div class="admin-popup-box">
+      <h2>Hey Admin 👋</h2>
+      <p>
+        Ready to shape the team and guide learning?<br>
+        Enter your admin pass to continue.
+      </p>
+
+      <input type="password" id="adminPass" placeholder="Enter admin password">
+
+      <div class="admin-actions">
+        <button id="enterAdminBtn">Enter Admin Mode</button>
+        <button id="cancelAdminBtn" class="ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN FAB ================= -->
+  <button class="admin-fab" id="adminFab" title="Admin Actions">+</button>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header premium-header">
+    <div class="logo-area" id="siteLogo">
+      <img src="images/CFC_Logo.png" alt="Mr. Technology Logo">
+      <span class="brand-text">Mr. Technology</span>
+    </div>
+
+    <div class="header-actions">
+      <a href="training.html" class="btn primary-btn">
+        Ready To Learn →
+      </a>
+      <a href="meet.html" class="btn outline-btn">
+        Meet Your Colleagues
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="carousel">
+      <img src="images/slider-1.jpg" alt="Welcome">
+    </div>
+  </section>
+
+  <!-- ================= CONTENT ================= -->
+  <section class="content">
+
+    <div class="content-block">
+      <div class="text-box">
+        <p>
+          This platform helps new employees settle in with clarity and confidence.
+          Everything you need to understand how the company works lives here.
+        </p>
+        <p style="margin-top:14px">
+          From onboarding to real workflows, learning is structured, simple,
+          and created by the team itself.
+        </p>
+      </div>
+      <div class="image-box">
+        <img src="images/img1.jpg">
+      </div>
+    </div>
+
+    <div class="content-block reverse">
+      <div class="image-box">
+        <img src="images/img2.jpg">
+      </div>
+      <div class="text-box">
+        <p>
+          Work is about people. Meet your colleagues, understand roles,
+          and feel connected before your first conversation.
+        </p>
+        <p style="margin-top:14px">
+          Because strong teams are built on clarity and connection.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    © 2025 Mr. Technology. Internal Learning Platform.
+  </footer>
+
+  <!-- ================= LOGO GESTURE (FIXED & SAFE) ================= -->
+  <script>
+    let clickTimer = null;
+    const logo = document.getElementById("siteLogo");
+
+    // SINGLE CLICK → HOME
+    logo.addEventListener("click", () => {
+      if (clickTimer) clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => {
+        location.href = "index.html";
+      }, 350);
+    });
+
+    // CTRL + SHIFT + DOUBLE CLICK → ADMIN
+    logo.addEventListener("dblclick", (e) => {
+      clearTimeout(clickTimer);
+
+      if (e.ctrlKey && e.shiftKey) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.showAdminPopup();
+      }
+    });
+  </script>
+
+  <!-- ================= ADMIN MODE SCRIPT ================= -->
+  <script type="module" src="js/admin-mode.js"></script>
+
+</body>
+
+</html>

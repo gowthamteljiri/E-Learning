@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel | Mr. Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header premium-header">
+  <div class="logo-area">
+    <span class="brand-text">Admin Panel</span>
+  </div>
+</header>
+
+<section class="admin-page">
+  <h2>Admin Controls</h2>
+  <p>Use the + button to manage training and employees.</p>
+</section>
+
+<!-- Floating + Button -->
+<button class="admin-fab" id="addBtn">+</button>
+
+<!-- Popup -->
+<div class="admin-popup" id="adminPopup">
+  <div class="admin-popup-box">
+    <h3>Add New</h3>
+
+    <button id="addFolderBtn">📁 Training Folder</button>
+    <button id="addVideoBtn">🎬 Training Video (Drive URL)</button>
+    <button id="addEmployeeBtn">👤 Employee</button>
+
+    <button class="close-btn" id="closePopup">Cancel</button>
+  </div>
+</div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
