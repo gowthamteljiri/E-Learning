@@ -65,8 +65,8 @@ const MODAL_HTML = `
       <label>Stars (1-5)</label>
       <input type="number" id="inpEmpStars" min="1" max="5" value="5">
 
-      <label>Photo URL (Drive/Imgur)</label>
-      <input type="text" id="inpEmpPhoto" placeholder="https://...">
+      <label>Photo URL (Right click image -> Copy Image Link)</label>
+      <input type="text" id="inpEmpPhoto" placeholder="https://... or images/your-file.jpg">
 
       <div class="admin-actions">
         <button id="subEmployee">Add Employee</button>

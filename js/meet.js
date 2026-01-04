@@ -31,17 +31,19 @@ async function loadEmployees() {
       item.className = "employee-item";
       item.dataset.id = docSnap.id;
 
+      // Fallback image source (generic avatar)
+      const fallbackImg = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+
       item.innerHTML = `
-        <img src="${emp.photoURL}" class="employee-avatar" />
+        <img src="${emp.photoURL}" class="employee-avatar" onerror="this.src='${fallbackImg}'" />
 
         <div class="employee-card">
-          ${
-            isAdmin
-              ? `<button class="delete-btn" title="Delete">🗑</button>`
-              : ""
-          }
+          ${isAdmin
+          ? `<button class="delete-btn" title="Delete">🗑</button>`
+          : ""
+        }
 
-          <img src="${emp.photoURL}" class="employee-photo-big" />
+          <img src="${emp.photoURL}" class="employee-photo-big" onerror="this.src='${fallbackImg}'" />
           <h3>${emp.name}</h3>
           <p>${emp.about}</p>
 
